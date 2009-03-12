@@ -213,20 +213,15 @@ Lightbox.prototype = {
         this.imageArray = [];
         var imageNum = 0;       
 
-        //if ((imageLink.rel == 'lightbox')){
-        //     if image is NOT part of a set, add single image to imageArray
-        //    this.imageArray.push([imageLink.href, imageLink.title]);         
-        //} else {
-            // if image is part of a set..
-            this.imageArray = 
-                //$$(imageLink.tagName + '[href][rel="' + imageLink.rel + '"]').
-                $$(imageLink.tagName + '[href][class="media"]').
-                //collect(function(anchor){ return [anchor.href, anchor.title]; }).
-                collect(function(anchor){ return [anchor.href, anchor.firstChild.getAttribute('title')]; }).
-                uniq();
-            
-            while (this.imageArray[imageNum][0] != imageLink.href) { imageNum++; }
-        //}
+		this.imageArray =
+			$$(imageLink.tagName + '[href][class="media"]').
+			collect(function(anchor){
+					var url = anchor.directlink ? anchor.directlink : anchor.href;
+				   	return [url, anchor.firstChild.getAttribute('title')]; }).
+			uniq();
+
+		var url = imageLink.directlink ? imageLink.directlink : imageLink.href;
+		while (this.imageArray[imageNum][0] != url) { imageNum++; }
 
         // calculate top and left offset for the lightbox 
         var arrayPageScroll = document.viewport.getScrollOffsets();
