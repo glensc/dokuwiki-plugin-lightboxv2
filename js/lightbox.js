@@ -46,13 +46,13 @@
 //  Configurationl
 //
 LightboxOptions = Object.extend({
-    fileLoadingImage:        'images/loading.gif',     
-    fileBottomNavCloseImage: 'images/closelabel.gif',
+    fileLoadingImage:        'lib/plugins/lightbox/images/loading.gif',     
+    fileBottomNavCloseImage: 'lib/plugins/lightbox/images/closelabel.gif',
 
     overlayOpacity: 0.8,   // controls transparency of shadow overlay
 
     animate: true,         // toggles resizing animations
-    resizeSpeed: 7,        // controls the speed of the image resizing animations (1=slowest and 10=fastest)
+    resizeSpeed: 10,        // controls the speed of the image resizing animations (1=slowest and 10=fastest)
 
     borderSize: 10,         //if you adjust the padding in the CSS, you will need to update this variable
 
@@ -188,7 +188,7 @@ Lightbox.prototype = {
         this.updateImageList = Prototype.emptyFunction;
 
         document.observe('click', (function(event){
-            var target = event.findElement('a[rel^=lightbox]') || event.findElement('area[rel^=lightbox]');
+            var target = event.findElement('a[class^=media]:not([class~=mediafile])') || event.findElement('area[class^=media]:not([class~=mediafile])');
             if (target) {
                 event.stop();
                 this.start(target);
@@ -213,18 +213,20 @@ Lightbox.prototype = {
         this.imageArray = [];
         var imageNum = 0;       
 
-        if ((imageLink.rel == 'lightbox')){
-            // if image is NOT part of a set, add single image to imageArray
-            this.imageArray.push([imageLink.href, imageLink.title]);         
-        } else {
+        //if ((imageLink.rel == 'lightbox')){
+        //     if image is NOT part of a set, add single image to imageArray
+        //    this.imageArray.push([imageLink.href, imageLink.title]);         
+        //} else {
             // if image is part of a set..
             this.imageArray = 
-                $$(imageLink.tagName + '[href][rel="' + imageLink.rel + '"]').
-                collect(function(anchor){ return [anchor.href, anchor.title]; }).
+                //$$(imageLink.tagName + '[href][rel="' + imageLink.rel + '"]').
+                $$(imageLink.tagName + '[href][class="media"]').
+                //collect(function(anchor){ return [anchor.href, anchor.title]; }).
+                collect(function(anchor){ return [anchor.href, anchor.firstChild.getAttribute('title')]; }).
                 uniq();
             
             while (this.imageArray[imageNum][0] != imageLink.href) { imageNum++; }
-        }
+        //}
 
         // calculate top and left offset for the lightbox 
         var arrayPageScroll = document.viewport.getScrollOffsets();
