@@ -1,0 +1,3 @@
+[submodule "jquery-lightbox"]
+	path = jquery-lightbox
+	url = git://github.com/krewenki/jquery-lightbox.git

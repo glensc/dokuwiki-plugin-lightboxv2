@@ -7,3 +7,5 @@ Laurent Beneytout <laurent.beneytout#gmail.com>
 Elan Ruusamäe <glen#pld-linux.org>
  - made plugin work with konqueror
  - made plugin work with compression enabled
+ - switch to use jQuery version of lightbox:
+   http://krewenki.github.com/jquery-lightbox/
