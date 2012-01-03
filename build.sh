@@ -29,15 +29,21 @@ tarball=$p-$v.tar.bz2
 install -d build/$p/images
 
 # include "jquery.lightbox.js" to "script.js"
-sed -re '/\/\* DOKUWIKI:include (.+) \*\//{
+sed -re '
+/\/\* DOKUWIKI:include (.+) \*\//{
 	r jquery-lightbox/jquery.lightbox.js
 	d
-}' script.js > build/$p/script.js
+}
+
+# use own imagedir
+s#lib/plugins/lightbox/jquery-lightbox/images/#lib/plugins/lightbox/images/#;
+
+' script.js > build/$p/script.js
 js_compress build/$p/script.js
 
 # replace images path in css
 sed -e '
-	s#\.\./images/#lib/plugins/lightbox/images/#g
+	s#\.\./images/#images/#g
 ' jquery-lightbox/css/lightbox.css > build/screen.css
 
 # include "lightbox.css" into "screen.css"
