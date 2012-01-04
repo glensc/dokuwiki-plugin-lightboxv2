@@ -1,1 +1,7 @@
-2012-01-03
+base    lightbox
+author  Elan Ruusamäe
+email   glen@delfi.ee
+date    2012-01-03
+name    Lightbox for images
+desc    Integrate lightbox for all images on wiki pages.
+url     http://www.dokuwiki.org/plugin:lightboxv2
