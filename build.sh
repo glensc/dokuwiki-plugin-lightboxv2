@@ -23,7 +23,7 @@ css_compress() {
 set -e
 
 p=lightbox
-v=$(cat VERSION | tr -d -)
+v=$(awk '/^date/{print $2}' plugin.info.txt)
 tarball=$p-$v.tar.bz2
 
 install -d build/$p/images
@@ -60,7 +60,7 @@ cp -p jquery-lightbox/images/{blank.gif,prev.gif,next.gif} build/$p/images
 cp -p jquery-lightbox/images/{loading.gif,closelabel.gif} build/$p/images
 
 # docs
-cp -p AUTHORS VERSION build/$p
+cp -p AUTHORS plugin.info.txt build/$p
 
 # setup sane perms
 chmod -R a+rX build/$p
