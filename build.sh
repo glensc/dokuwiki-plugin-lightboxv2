@@ -24,7 +24,7 @@ set -e
 
 p=lightbox
 v=$(awk '/^date/{print $2}' plugin.info.txt)
-tarball=$p-$v.tar.bz2
+zipball=$p-$v.zip
 
 install -d build/$p/images
 
@@ -61,13 +61,17 @@ cp -p jquery-lightbox/images/{loading.gif,closelabel.gif} build/$p/images
 
 # docs
 cp -p AUTHORS plugin.info.txt build/$p
+# dummy file, needed for plugin info to work
+cp -p helper.php build/$p
 
 # setup sane perms
 chmod -R a+rX build/$p
 find build/$p -type f | xargs chmod a-x
 
 # zip it up
-tar -C build -cjf $tarball $p
+cd build
+zip ../$zipball -r $p
+cd ..
 
 # and cleanup
 rm -rf build
