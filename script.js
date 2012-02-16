@@ -23,8 +23,8 @@ jQuery(function($) {
 			return false;
 		}
 	}).lightbox({
-		fileLoadingImage: 'lib/plugins/lightbox/jquery-lightbox/images/loading.gif',
-		fileBottomNavCloseImage: 'lib/plugins/lightbox/jquery-lightbox/images/closelabel.gif',
+		fileLoadingImage: DOKU_BASE +'lib/plugins/lightbox/jquery-lightbox/images/loading.gif',
+		fileBottomNavCloseImage: DOKU_BASE +'lib/plugins/lightbox/jquery-lightbox/images/closelabel.gif',
 		fitToScreen: true,
 		jsonData: jsonData,
 		jsonDataParser: function(data) {
