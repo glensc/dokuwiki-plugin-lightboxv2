@@ -12,7 +12,10 @@ jQuery(function($) {
 			var url = img.src;
 
 			// remove size specification
-			url = url.replace(/\?w=\d+/, '');
+			// userewrite=0: /lib/exe/fetch.php?w=200&media=image.png, fetch.php?media=image.png
+			// userewrite=1: /_media/image.png?w=200, /_media/image.png
+			// userewrite=2: /lib/exe/fetch.php/image.png?w=200, /lib/exe/fetch.php/image.png
+			url = url.replace(/\?w=\d+&?/, '?');
 			jsonData.push([url, img.title || '']);
 
 			// rewrite .href, so lightbox could find active image from set
