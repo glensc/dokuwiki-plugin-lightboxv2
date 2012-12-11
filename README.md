@@ -3,6 +3,21 @@ Dokuwiki Lightbox Plugin
 
 Dokuwiki plugin to integrate lightbox for all images on wiki pages
 
+Download and Installation
+-------------------------
+
+Download and install the plugin using the [Plugin Manager](https://www.dokuwiki.org/plugin:plugin)
+using the URLs from [Downloads](https://github.com/glensc/dokuwiki-plugin-lightboxv2/downloads).
+Refer to [Plugins](https://www.dokuwiki.org/plugins) on how to install plugins manually.
+
+The plugin can also be installed via git.
+
+    % cd <dokuwiki>/lib/plugins
+    % git clone git://github.com/glensc/dokuwiki-plugin-lightboxv2.git lightbox
+    % cd lightbox
+    % git submodule init
+    % git submodule update
+
 Changes by Elan Ruusamäe
 ------------------------
 
