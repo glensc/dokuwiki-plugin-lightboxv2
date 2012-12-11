@@ -15,8 +15,7 @@ The plugin can also be installed via git.
     % cd <dokuwiki>/lib/plugins
     % git clone git://github.com/glensc/dokuwiki-plugin-lightboxv2.git lightbox
     % cd lightbox
-    % git submodule init
-    % git submodule update
+    % git submodule update --init
 
 Changes by Elan Ruusamäe
 ------------------------
