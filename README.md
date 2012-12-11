@@ -1,5 +1,7 @@
+Dokuwiki Lightbox Plugin
+========================
+
 Dokuwiki plugin to integrate lightbox for all images on wiki pages
-==================================================================
 
 Changes by Elan Ruusamäe
 ------------------------
